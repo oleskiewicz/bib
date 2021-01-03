@@ -8,7 +8,7 @@ install: bib
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/bib
-	rm -f $(DESTDIR)$(MANPREFIX)/man/man1/bib.1.gz
+	rm -f $(DESTDIR)$(MANPREFIX)/man/man1/bib.1
 
 bib: bib.o
 	$(LD) -o $@ $< $(LDLIBS) $(LDFLAGS)
