@@ -1,0 +1,78 @@
+.Dd 2021-01-03
+.Dt BIB 1
+.Sh NAME
+.Nm bib
+.Nd bibliography managers
+.Sh SYNOPSIS
+.Nm
+.Op Fl hv
+.Op Fl brty
+.Op Ar FILE.bib
+.Sh DESCRIPTION
+.Nm
+can be used to read bibtex format and output bibtex, YAML, refer (for
+.Xr refer 1
+and
+.Xr groff 1
+usage), or TSV.
+.Nm
+is a command-line wrapper around the
+.Lb btparse .
+.Pp
+.Ar FILE.bib
+is the first argument, otherwise is read from the standard input.
+.El
+.Bl -tag -width Ds
+.It Fl h
+Print a quick usage text.
+.It Fl v
+Print version number.
+.It Fl b
+Output bibtex format (the default).  This will be pretty-printed with tabs, and
+with braces escaped inside field values.
+.It Fl r
+Output refer format.
+.It Fl y
+Output YAML format, to be used with
+.Xr pandoc 1
+markdown bibliographies.
+.It Fl t
+Output TSV format (only author an title columns).
+.Sh EXAMPLES
+Format bibtex file in-place:
+.Bd -literal
+  $ cat FILE.bib
+  @article{einstein1916,
+    title={The foundation of the general theory of relativity}, author={Einstein, Albert}, year={1916},
+  }
+  @article{abott2016,
+    author="Abbott, Benjamin P.; et al.", title="Observation of Gravitational Waves from a Binary {Black Hole} Merger", year="2016",
+  }
+
+  $ bib < FILE.bib | sponge FILE.bib
+  @article{einstein1916
+          title = {The foundation of the general theory of relativity},
+          author = {Einstein Albert},
+          year = {1916},
+  }
+  @article{abott2016
+          author = {Abbott Benjamin P et al},
+          title = {Observation of Gravitational Waves from a Binary Black Hole Merger},
+          year = {2016},
+  }
+.Ed
+.Pp
+Convert to TSV:
+.Bd
+  $ bib -t FILE.bib
+  The foundation of the general theory of relativity	Einstein Albert
+  Abbott Benjamin P et al	Observation of Gravitational Waves from a Binary Black Hole Merger
+.Ed
+.Sh SEE ALSO
+.Xr refer 1
+.Xr groff 1
+.Xr bibtex 1
+.Xr pandoc 1
+.Xr btparse 3
+.Sh AUTHORS
+.An Piotr Oleskiewicz

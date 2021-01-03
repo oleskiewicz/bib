@@ -1,0 +1,14 @@
+bib
+===
+bibtex bibliography manager, written using `btparse` library
+
+usage
+-----
+	bib < test.bib
+by default will read bibtex from stdin, and output formatted bibtex to stdout.
+Other formats (yaml for pandoc, refer for groff, tsv) are available.
+
+todo
+----
+- print correct entry type (article / book, etc)
+- order tsv fields
