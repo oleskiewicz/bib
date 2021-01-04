@@ -39,13 +39,14 @@ version(void)
 void
 print_entry_open(AST *entry)
 {
+	char *entry_type = bt_entry_type(entry);
 	char *entry_key = bt_entry_key(entry);
 	switch (c.format) {
 	case REFER:
 		printf("%%K %s\n", entry_key);
 		break;
 	case BIBTEX:
-		printf("@article{%s\n", entry_key);
+		printf("@%s{%s\n", entry_type, entry_key);
 		break;
 	case TSV:
 		break;

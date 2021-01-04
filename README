@@ -10,5 +10,4 @@ Other formats (yaml for pandoc, refer for groff, tsv) are available.
 
 todo
 ----
-- print correct entry type (article / book, etc)
 - order tsv fields
