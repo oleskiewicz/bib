@@ -1,1 +1,5 @@
-bib
+config.mk
+bibfmt
+bib2ref
+bib2tsv
+bib2yml

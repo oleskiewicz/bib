@@ -1,0 +1,20 @@
+#!/bin/sh -e
+
+die() { echo "$1" >&2; exit 1; }
+
+find_library() {
+	pkg-config "$1" || die "$1 not installed"
+	echo CFLAGS+="$(pkg-config --cflags "$1")"
+	echo LDFLAGS+="$(pkg-config --libs "$1")"
+}
+
+cat <<-EOF > config.mk
+VERSION   = 0.1
+CC        = cc
+LD        = \$(CC)
+PREFIX    = /usr/local
+MANPREFIX = \$(PREFIX)/share
+CFLAGS    = -DVERSION=\"\$(VERSION)\" -Wall -std=c99 -Os
+EOF
+
+find_library btparse >> config.mk

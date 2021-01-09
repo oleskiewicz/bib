@@ -25,7 +25,7 @@ char *argv0;
 void
 usage(void)
 {
-	fprintf(stderr, "usage: %s [-hv] [-brty] FILE.bib\n", argv0);
+	fprintf(stderr, "usage: %s [-hv] [-brty] [FILE.bib]\n", argv0);
 	exit(1);
 }
 
